@@ -3,7 +3,7 @@
 // import org.springframework.boot.SpringApplication;
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HelloWorldBean, WelcomeDataService } from '../service/data/welcome-data.service';
+import { HelloWorldBean, WelcomeDataService } from './../service/data/welcome-data.service';
 // import { AppComponent } from '../app.component';
 
 // @ComponentScan(
@@ -47,6 +47,19 @@ export class WelcomeComponent implements OnInit {
     // console.log("get welcome message");
   }
 
+  getWelcomeMessageWithParameter() {
+    //console.log(this.service.executeHelloWorldBeanService());
+
+    this.service.executeHelloWorldServiceWithPathVariable(this.name).subscribe(
+      response => this.handleSuccessfulResponse(response),
+      error => this.handleErrorResponse(error)
+    );
+
+    //console.log('last line of getWelcomeMessage')
+
+    //console.log("get welcome message");
+  }
+
   handleSuccessfulResponse(response: HelloWorldBean){
     this.welcomeMessageFromService = response.message
     // console.log(response);
@@ -60,6 +73,8 @@ export class WelcomeComponent implements OnInit {
     // console.log(error.error.message);
     this.welcomeMessageFromService = error.error.message
   }
+
+
 }
 
 
