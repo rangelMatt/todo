@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoDataService } from './../service/data/todo-data.service';
 
 export class Todo {
   constructor(
@@ -6,7 +7,7 @@ export class Todo {
     public description: string,
     public done: boolean,
     public targetDate: Date
-  ){
+  ) {
 
   }
 }
@@ -18,22 +19,63 @@ export class Todo {
 })
 export class ListTodosComponent implements OnInit {
 
-  todos = [
-    new Todo(1, 'Learn to Dance', false, new Date()),
-    new Todo(2, 'Become an Expert at Angular', false, new Date()),
-    new Todo(3, 'Visit India', false, new Date()),
-    // {id : 1, description : },
-    // {id : 2, description : },
-    // {id : 3, description : 'Visit India'}
-  ]
+  todos: Todo[] | undefined
+
+  message: string
+    // = [
+    //   new Todo(1, 'Learn to Dance', false, new Date()),
+    //   new Todo(2, 'Become an Expert at Angular', false, new Date()),
+    //   new Todo(3, 'Visit India', false, new Date()),
+    //   // {id : 1, description : },
+    //   // {id : 2, description : },
+    //   // {id : 3, description : 'Visit India'}
+    // ]
+    // todo = {
+    //   id: 1,
+    //   description: 'Learn to Dance',
+    // }
+    | undefined
+  // = [
+  //   new Todo(1, 'Learn to Dance', false, new Date()),
+  //   new Todo(2, 'Become an Expert at Angular', false, new Date()),
+  //   new Todo(3, 'Visit India', false, new Date()),
+  //   // {id : 1, description : },
+  //   // {id : 2, description : },
+  //   // {id : 3, description : 'Visit India'}
+  // ]
   // todo = {
   //   id: 1,
   //   description: 'Learn to Dance',
   // }
 
-  constructor() { }
+  constructor(
+    private todoService: TodoDataService
+  ) { }
 
   ngOnInit(): void {
+    this.refreshTodos();
   }
 
+  refreshTodos() {
+    this.todoService.retrieveAllTodos('centralcoastbarbell').subscribe(
+      response => {
+        console.log(response);
+        this.todos = response;
+      }
+    )
+  }
+
+  deleteTodo(id: any) {
+    console.log(`delete todo #${id}`)
+    this.todoService.deleteTodo('centralcoastbarbell', id).subscribe(
+      response => {
+        console.log(response);
+        this.message = `Delete of Todo ID #${id} is Successful!`;
+        this.refreshTodos();
+      }
+    )
+  }
+  updateTodo(id: any) {
+    console.log(`update todo #${id}`)
+  }
 }
