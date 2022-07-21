@@ -14,7 +14,7 @@ export class BasicAuthenticationService {
   constructor(private http: HttpClient) { }
 
   executeAuthenticationService(username: any, password: any) {
-    let basicAuthHeaderString = ('Basic ' + window.btoa(`${username}:${password}`));
+    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
 
     let headers = new HttpHeaders({
       Authorization: basicAuthHeaderString
@@ -38,8 +38,11 @@ export class BasicAuthenticationService {
   }
 
   getAuthenticatedToken() {
-    if(this.getAuthenticatedUser())
-    return *
+    if(this.getAuthenticatedUser()) {
+      return sessionStorage.getItem(TOKEN)
+    } else {
+      return null;
+    }
   }
 
   isUserLoggedIn() {
