@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BasicAuthenticationService } from '../service/basic-authentication.service';
+import { BasicAuthenticationService } from './../service/basic-authentication.service';
 import { HardcodedAuthenticationService } from '../service/hardcoded-authentication.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { HardcodedAuthenticationService } from '../service/hardcoded-authenticat
 })
 export class LoginComponent implements OnInit {
 
-  username = "admin"
+  username = "centralcoastbarbell"
   password = ""
   errorMessage = 'Invalid Credentials'
   invalidLogin = false
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private hardcodedAuthenticationService: HardcodedAuthenticationService,
     private basicAuthenticationService: BasicAuthenticationService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   handleLogin() {

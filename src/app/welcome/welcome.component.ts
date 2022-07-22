@@ -51,8 +51,8 @@ export class WelcomeComponent implements OnInit {
     //console.log(this.service.executeHelloWorldBeanService());
 
     this.service.executeHelloWorldServiceWithPathVariable(this.name).subscribe(
-      response => this.handleSuccessfulResponse(response),
-      error => this.handleErrorResponse(error)
+      (      response: HelloWorldBean) => this.handleSuccessfulResponse(response),
+      (      error: { error: { message: string | undefined; }; }) => this.handleErrorResponse(error)
     );
 
     //console.log('last line of getWelcomeMessage')
