@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BasicAuthenticationService } from './../service/basic-authentication.service';
-import { HardcodedAuthenticationService } from '../service/hardcoded-authentication.service';
+import { HardcodedAuthenticationService } from './../service/hardcoded-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +10,8 @@ import { HardcodedAuthenticationService } from '../service/hardcoded-authenticat
 })
 export class LoginComponent implements OnInit {
 
-  username = "centralcoastbarbell"
-  password = ""
+  username = 'centralcoastbarbell'
+  password = ''
   errorMessage = 'Invalid Credentials'
   invalidLogin = false
 
@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     private hardcodedAuthenticationService: HardcodedAuthenticationService,
     private basicAuthenticationService: BasicAuthenticationService) { }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {
   }
 

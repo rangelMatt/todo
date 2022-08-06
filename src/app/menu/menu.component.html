@@ -3,7 +3,7 @@
     <div><a href="https://www.facebook.com/CentralCoastBarbell/" class="navbar-brand">Central Coast Barbell</a></div>
 
     <ul class="navbar-nav">
-      <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" href="#" routerLink="/welcome/admin" class="nav-link">Home</a></li>
+      <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/welcome/admin" class="nav-link">Home</a></li>
       <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/todos" class="nav-link">Todos</a></li>
     </ul>
 
