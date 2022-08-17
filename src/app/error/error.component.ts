@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +11,7 @@ export class ErrorComponent implements OnInit {
   errorMessage = 'An Error Occured! Contact Support at ***-****';
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

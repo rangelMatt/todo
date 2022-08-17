@@ -57,9 +57,7 @@ export class BasicAuthenticationService {
 }
 
 export class AuthenticationBean {
-  constructor(public message: any) {
-
-  }
+  constructor(public message: string) { }
 
 
 }
