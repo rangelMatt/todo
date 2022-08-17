@@ -19,7 +19,7 @@ import { HelloWorldBean, WelcomeDataService } from './../service/data/welcome-da
 export class WelcomeComponent implements OnInit {
 
   message = 'Welcome again!'
-  welcomeMessageFromService:string | undefined
+  welcomeMessageFromService: string | undefined = undefined
 
   name = ''
 
